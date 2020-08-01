@@ -3,6 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const handleClick = async (event) => {
+    let message = { message: "hello" };
+
+    await fetch("http://localhost:9000/api/click", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    })
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +30,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleClick}>Click Me</button>
       </header>
     </div>
   );
