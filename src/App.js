@@ -4,7 +4,9 @@ import './App.css';
 
 function App() {
   const handleClick = async (event) => {
-    let message = { message: "hello" };
+    const { value } = event.target;
+    let message = { message: value };
+    console.log(JSON.stringify(message))
 
     await fetch("http://localhost:9000/api/click", {
       method: 'POST',
@@ -30,7 +32,9 @@ function App() {
         >
           Learn React
         </a>
-        <button onClick={handleClick}>Click Me</button>
+        <button onClick={handleClick} value="hello">Hello</button>
+        <button onClick={handleClick} value="hi there">Hi There</button>
+        <button onClick={handleClick} value="click me">Click Me</button>
       </header>
     </div>
   );
